@@ -13,11 +13,13 @@ import AVFoundation
 class ViewController: UIViewController {
     @IBOutlet weak var playerView: YTPlayerView!
     @IBOutlet weak var gazePointView: UIImageView!
+    private lazy var caliPointView = CalibrationPointView(frame: CGRect(x: 0, y: -40, width: 40, height: 40))
     
     var tracker: GazeTracker? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.configureSubviews()
         self.loadVideo(with: "M7lc1UVf-VE")
         DispatchQueue.global().async {
             self.startEyeTracking()
@@ -40,19 +42,13 @@ extension ViewController {
             subview.isHidden = false
         }
     }
-}
-
-// MARK: StatusDelegate
-extension ViewController: StatusDelegate {
-    func onStarted() {
-        print("DEBUG: Tracker starts tracking")
-    }
     
-    func onStopped(error: StatusError) {
-        print("ERROR: Tracking is stopped - \(error.description)")
+    private func configureSubviews() {
+        self.hideSubview(self.playerView)
+        self.hideSubview(self.gazePointView)
+        self.view.addSubview(self.caliPointView)
     }
 }
-
 
 // MARK: Youtube
 extension ViewController {
@@ -99,8 +95,10 @@ extension ViewController: InitializationDelegate {
         if (tracker != nil) {
             self.tracker = tracker
             print("DEBUG: initialized gaze tracker")
-            self.tracker?.statusDelegate = self
-            self.tracker?.gazeDelegate = self
+            self.tracker?.setDelegates(statusDelegate: self,
+                                       gazeDelegate: self,
+                                       calibrationDelegate: self,
+                                       imageDelegate: nil)
             DispatchQueue.global().async {
                 self.tracker?.startTracking()
             }
@@ -110,9 +108,24 @@ extension ViewController: InitializationDelegate {
     }
 }
 
+// MARK: StatusDelegate
+extension ViewController: StatusDelegate {
+    func onStarted() {
+        print("DEBUG: Tracker starts tracking")
+        self.startCalibration()
+    }
+    
+    func onStopped(error: StatusError) {
+        print("ERROR: Tracking is stopped - \(error.description)")
+    }
+}
+
 // MARK: GazeDelegate
 extension ViewController: GazeDelegate {
     func onGaze(gazeInfo : GazeInfo) {
+        guard let isCalibrating = self.tracker?.isCalibrating(),
+                  !isCalibrating else { return }
+        
         print("timestamp : \(gazeInfo.timestamp), (x , y) : (\(gazeInfo.x), \(gazeInfo.y)) , state : \(gazeInfo.trackingState.description)")
         DispatchQueue.main.async {
             if gazeInfo.trackingState == .SUCCESS {
@@ -122,5 +135,51 @@ extension ViewController: GazeDelegate {
                 self.hideSubview(self.gazePointView)
             }
         }
+    }
+}
+
+// MARK: Calibration
+extension ViewController {
+    private func startCalibration() {
+        let result = self.tracker?.startCalibration(mode: .ONE_POINT, criteria: .DEFAULT)
+        if let isStart = result,
+           !isStart {
+            print("ERROR: Calibration start failed")
+        } else {
+            print("DEBUG: Calibration start success")
+        }
+    }
+    
+    private func stopCalibration(){
+        self.tracker?.stopCalibration()
+        self.hideSubview(self.caliPointView)
+    }
+}
+
+// MARK: CalibrationDelegate
+extension ViewController : CalibrationDelegate {
+    func onCalibrationProgress(progress: Double) {
+        caliPointView.setProgress(progress: progress)
+    }
+    
+    func onCalibrationNextPoint(x: Double, y: Double) {
+        DispatchQueue.main.async {
+            self.caliPointView.center = CGPoint(x: x, y: y)
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+            if let result = self.tracker?.startCollectSamples() {
+                print("DEBUG: startCollectSamples : \(result)")
+            }
+        })
+    }
+    
+    func onCalibrationFinished(calibrationData : [Double]) {
+        print("DEBUG: Calibration finished")
+        self.tracker?.stopCalibration()
+        self.hideSubview(self.caliPointView)
+        
+        self.showSubview(self.playerView)
+        self.playerView.playVideo()
     }
 }

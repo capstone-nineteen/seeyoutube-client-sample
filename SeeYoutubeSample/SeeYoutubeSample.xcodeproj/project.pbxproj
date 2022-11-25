@@ -18,6 +18,7 @@
 		04545FBB29310B0A00F01BE6 /* SeeSo.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04545FB829310AFD00F01BE6 /* SeeSo.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		04545FBE29310B4A00F01BE6 /* LicenseKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04545FBD29310B4A00F01BE6 /* LicenseKey.plist */; };
 		04545FC129310CD300F01BE6 /* Bundle+eExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04545FC029310CD300F01BE6 /* Bundle+eExtension.swift */; };
+		04545FC4293111F100F01BE6 /* CalibrationPointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04545FC3293111F100F01BE6 /* CalibrationPointView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -46,6 +47,7 @@
 		04545FB829310AFD00F01BE6 /* SeeSo.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = SeeSo.xcframework; sourceTree = "<group>"; };
 		04545FBD29310B4A00F01BE6 /* LicenseKey.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = LicenseKey.plist; sourceTree = "<group>"; };
 		04545FC029310CD300F01BE6 /* Bundle+eExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+eExtension.swift"; sourceTree = "<group>"; };
+		04545FC3293111F100F01BE6 /* CalibrationPointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationPointView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 		04545FA02931061800F01BE6 /* SeeYoutubeSample */ = {
 			isa = PBXGroup;
 			children = (
+				04545FC2293111E300F01BE6 /* Views */,
 				04545FBF29310CC600F01BE6 /* Extensions */,
 				04545FA12931061800F01BE6 /* AppDelegate.swift */,
 				04545FA32931061800F01BE6 /* SceneDelegate.swift */,
@@ -100,6 +103,14 @@
 				04545FC029310CD300F01BE6 /* Bundle+eExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		04545FC2293111E300F01BE6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				04545FC3293111F100F01BE6 /* CalibrationPointView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,6 +194,7 @@
 			files = (
 				04545FA62931061800F01BE6 /* ViewController.swift in Sources */,
 				04545FC129310CD300F01BE6 /* Bundle+eExtension.swift in Sources */,
+				04545FC4293111F100F01BE6 /* CalibrationPointView.swift in Sources */,
 				04545FA22931061800F01BE6 /* AppDelegate.swift in Sources */,
 				04545FA42931061800F01BE6 /* SceneDelegate.swift in Sources */,
 			);
