@@ -15,6 +15,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var playerView: YTPlayerView!
     @IBOutlet weak var gazePointView: UIImageView!
     private lazy var caliPointView = CalibrationPointView(frame: CGRect(x: 0, y: -40, width: 40, height: 40))
+    @IBOutlet weak var preview: UIImageView!
+    @IBOutlet weak var predictionLabel: UILabel!
     
     var tracker: GazeTracker? = nil
     private var watchingInfo = WatchingInfo()
@@ -47,6 +49,8 @@ extension ViewController {
     }
     
     private func configureSubviews() {
+        self.hideSubview(self.preview)
+        self.hideSubview(self.predictionLabel)
         self.hideSubview(self.playerView)
         self.hideSubview(self.gazePointView)
         self.view.addSubview(self.caliPointView)
@@ -76,6 +80,15 @@ extension ViewController {
     private func updateWatchingInfo(state: EmotionInfo.EmotionPredictionState, predictions: [FaceExpressionPredictor.Prediction] = []) {
         let emotionInfo = EmotionInfo(emotionPredictionState: state, predictionResult: predictions)
         self.watchingInfo.updateEmotionInfo(with: emotionInfo)
+        
+        DispatchQueue.main.async {
+            if let emotionInfo = self.watchingInfo.emotionInfo,
+               let topPrediction = emotionInfo.predictionResult.first {
+                self.predictionLabel.text = topPrediction.classification + "\n" + topPrediction.confidencePercentage + "%"
+            } else {
+                self.predictionLabel.text = "No Predictions"
+            }
+        }
     }
 }
 
@@ -200,6 +213,8 @@ extension ViewController : CalibrationDelegate {
         self.tracker?.stopCalibration()
         self.hideSubview(self.caliPointView)
         
+        self.showSubview(self.preview)
+        self.showSubview(self.predictionLabel)
         self.showSubview(self.playerView)
         self.playerView.playVideo()
     }
@@ -244,6 +259,10 @@ extension ViewController {
         guard let cgImage = cgImage?.croppingDetectionBondingBox(to: observedFace.boundingBox) else {
             self.updateWatchingInfo(state: .failedToCropFace)
             return
+        }
+        
+        DispatchQueue.main.async {
+            self.preview.image = UIImage(cgImage: cgImage)
         }
         
         DispatchQueue.global(qos: .userInitiated).async {
