@@ -22,7 +22,15 @@ class ViewController: UIViewController {
 // MARK: Youtube
 extension ViewController {
     private func loadVideo(with id: String) {
+        self.playerView.delegate = self
         self.playerView.load(withVideoId: id, playerVars: ["playsinline": "1",
                                                            "controls": "0"])
+    }
+}
+
+// MARK: YTPlayerViewDelegate
+extension ViewController: YTPlayerViewDelegate {
+    func playerView(_ playerView: YTPlayerView, didPlayTime playTime: Float) {
+        print(playTime)
     }
 }
