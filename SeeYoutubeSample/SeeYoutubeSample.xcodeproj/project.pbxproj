@@ -24,6 +24,7 @@
 		04545FCB293113EC00F01BE6 /* MiniXception.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 04545FCA293113EC00F01BE6 /* MiniXception.mlmodel */; };
 		04545FCD2931144400F01BE6 /* FaceExpressionPredictor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04545FCC2931144400F01BE6 /* FaceExpressionPredictor.swift */; };
 		04545FCF2931145B00F01BE6 /* VNClassificationObservation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04545FCE2931145B00F01BE6 /* VNClassificationObservation+Extension.swift */; };
+		04545FD12931148900F01BE6 /* EmotionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04545FD02931148900F01BE6 /* EmotionInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -58,6 +59,7 @@
 		04545FCA293113EC00F01BE6 /* MiniXception.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MiniXception.mlmodel; sourceTree = "<group>"; };
 		04545FCC2931144400F01BE6 /* FaceExpressionPredictor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceExpressionPredictor.swift; sourceTree = "<group>"; };
 		04545FCE2931145B00F01BE6 /* VNClassificationObservation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VNClassificationObservation+Extension.swift"; sourceTree = "<group>"; };
+		04545FD02931148900F01BE6 /* EmotionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 			children = (
 				04545FC62931132E00F01BE6 /* VideoGazeInfo.swift */,
 				04545FC82931134C00F01BE6 /* WatchingInfo.swift */,
+				04545FD02931148900F01BE6 /* EmotionInfo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 				04545FCD2931144400F01BE6 /* FaceExpressionPredictor.swift in Sources */,
 				04545FA62931061800F01BE6 /* ViewController.swift in Sources */,
 				04545FCF2931145B00F01BE6 /* VNClassificationObservation+Extension.swift in Sources */,
+				04545FD12931148900F01BE6 /* EmotionInfo.swift in Sources */,
 				04545FC129310CD300F01BE6 /* Bundle+eExtension.swift in Sources */,
 				04545FC4293111F100F01BE6 /* CalibrationPointView.swift in Sources */,
 				04545FCB293113EC00F01BE6 /* MiniXception.mlmodel in Sources */,

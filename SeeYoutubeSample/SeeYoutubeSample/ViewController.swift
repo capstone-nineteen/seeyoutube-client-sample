@@ -71,6 +71,11 @@ extension ViewController {
     private func updateWatchingInfo(playTime: Float) {
         self.watchingInfo.updatePlayTime(with: playTime)
     }
+    
+    private func updateWatchingInfo(state: EmotionInfo.EmotionPredictionState, predictions: [FaceExpressionPredictor.Prediction] = []) {
+        let emotionInfo = EmotionInfo(emotionPredictionState: state, predictionResult: predictions)
+        self.watchingInfo.updateEmotionInfo(with: emotionInfo)
+    }
 }
 
 // MARK: Youtube
