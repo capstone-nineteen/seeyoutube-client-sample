@@ -13,9 +13,16 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        self.loadVideo(with: "M7lc1UVf-VE")
     }
 
 
 }
 
+// MARK: Youtube
+extension ViewController {
+    private func loadVideo(with id: String) {
+        self.playerView.load(withVideoId: id, playerVars: ["playsinline": "1",
+                                                           "controls": "0"])
+    }
+}
