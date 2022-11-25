@@ -334,6 +334,7 @@
 				DEVELOPMENT_TEAM = 22RJP8YV7Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SeeYoutubeSample/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera permission is required to perform eye-tracking and facial-expression-recognition.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -362,6 +363,7 @@
 				DEVELOPMENT_TEAM = 22RJP8YV7Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SeeYoutubeSample/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera permission is required to perform eye-tracking and facial-expression-recognition.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
