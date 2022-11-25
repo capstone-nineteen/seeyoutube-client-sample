@@ -213,7 +213,7 @@ extension ViewController: ImageDelegate {
                 print("ERROR: unable to get image from sample buffer")
                 return
             }
-            // frame 가지고 prediction
+            self.detectFace(in: frame)
         }
     }
 }
@@ -244,6 +244,25 @@ extension ViewController {
         guard let cgImage = cgImage?.croppingDetectionBondingBox(to: observedFace.boundingBox) else {
             self.updateWatchingInfo(state: .failedToCropFace)
             return
+        }
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.classifyFaceExpression(cgImage)
+        }
+    }
+    
+    /// 표정 분석을 수행한다.
+    private func classifyFaceExpression(_ image: CGImage) {
+        do {
+            try self.faceExpressionPredictor.makePredictions(for: image) { [weak self] predictions in
+                if let predictions = predictions {
+                    self?.updateWatchingInfo(state: .success, predictions: predictions)
+                } else {
+                    self?.updateWatchingInfo(state: .noPredictions)
+                }
+            }
+        } catch {
+            print("ERROR: Vision was unable to make a prediction...\n\n\(error.localizedDescription)")
         }
     }
 }
