@@ -25,6 +25,7 @@
 		04545FCD2931144400F01BE6 /* FaceExpressionPredictor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04545FCC2931144400F01BE6 /* FaceExpressionPredictor.swift */; };
 		04545FCF2931145B00F01BE6 /* VNClassificationObservation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04545FCE2931145B00F01BE6 /* VNClassificationObservation+Extension.swift */; };
 		04545FD12931148900F01BE6 /* EmotionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04545FD02931148900F01BE6 /* EmotionInfo.swift */; };
+		04545FD32931158D00F01BE6 /* CGImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04545FD22931158D00F01BE6 /* CGImage+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -60,6 +61,7 @@
 		04545FCC2931144400F01BE6 /* FaceExpressionPredictor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceExpressionPredictor.swift; sourceTree = "<group>"; };
 		04545FCE2931145B00F01BE6 /* VNClassificationObservation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VNClassificationObservation+Extension.swift"; sourceTree = "<group>"; };
 		04545FD02931148900F01BE6 /* EmotionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionInfo.swift; sourceTree = "<group>"; };
+		04545FD22931158D00F01BE6 /* CGImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGImage+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 			children = (
 				04545FC029310CD300F01BE6 /* Bundle+eExtension.swift */,
 				04545FCE2931145B00F01BE6 /* VNClassificationObservation+Extension.swift */,
+				04545FD22931158D00F01BE6 /* CGImage+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 				04545FC92931134C00F01BE6 /* WatchingInfo.swift in Sources */,
 				04545FC72931132E00F01BE6 /* VideoGazeInfo.swift in Sources */,
 				04545FA42931061800F01BE6 /* SceneDelegate.swift in Sources */,
+				04545FD32931158D00F01BE6 /* CGImage+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

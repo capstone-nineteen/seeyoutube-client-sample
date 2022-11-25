@@ -9,6 +9,7 @@ import UIKit
 import YouTubeiOSPlayerHelper
 import SeeSo
 import AVFoundation
+import Vision
 
 class ViewController: UIViewController {
     @IBOutlet weak var playerView: YTPlayerView!
@@ -213,6 +214,36 @@ extension ViewController: ImageDelegate {
                 return
             }
             // frame 가지고 prediction
+        }
+    }
+}
+
+// MARK: Face Expression Prediction
+extension ViewController {
+    /// 카메라 프레임으로부터 얼굴을 탐지한다.
+    private func detectFace(in image: CVPixelBuffer) {
+        let faceDetectionRequest = VNDetectFaceLandmarksRequest(completionHandler: { (request: VNRequest, error: Error?) in
+            if let results = request.results as? [VNFaceObservation] {
+                self.handleFaceDetectionResults(results, image: image)
+            }
+        })
+        let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: image, orientation: .leftMirrored, options: [:])
+        try? imageRequestHandler.perform([faceDetectionRequest])
+    }
+    
+    /// 얼굴 탐지 결과를 바탕으로 얼굴 부분만 크롭한다.
+    func handleFaceDetectionResults(_ observedFaces: [VNFaceObservation], image: CVPixelBuffer) {
+        guard let observedFace = observedFaces.first else {
+            self.updateWatchingInfo(state: .faceMissing)
+            return
+        }
+
+        let ciImage = CIImage(cvPixelBuffer: image).transformed(by: CGAffineTransform(rotationAngle: .pi))
+        let cgImage = CIContext().createCGImage(ciImage, from: ciImage.extent)
+
+        guard let cgImage = cgImage?.croppingDetectionBondingBox(to: observedFace.boundingBox) else {
+            self.updateWatchingInfo(state: .failedToCropFace)
+            return
         }
     }
 }
