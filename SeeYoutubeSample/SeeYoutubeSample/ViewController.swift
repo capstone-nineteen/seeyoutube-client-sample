@@ -26,6 +26,18 @@ class ViewController: UIViewController {
 
 }
 
+// MARK: StatusDelegate
+extension ViewController: StatusDelegate {
+    func onStarted() {
+        print("DEBUG: Tracker starts tracking")
+    }
+    
+    func onStopped(error: StatusError) {
+        print("ERROR: Tracking is stopped - \(error.description)")
+    }
+}
+
+
 // MARK: Youtube
 extension ViewController {
     private func loadVideo(with id: String) {
@@ -71,6 +83,10 @@ extension ViewController: InitializationDelegate {
         if (tracker != nil) {
             self.tracker = tracker
             print("DEBUG: initialized gaze tracker")
+            self.tracker?.statusDelegate = self
+            DispatchQueue.global().async {
+                self.tracker?.startTracking()
+            }
         } else {
             print("ERROR: failed to initialize gaze tracker \(error.description)")
         }
