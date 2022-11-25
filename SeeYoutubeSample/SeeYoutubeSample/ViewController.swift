@@ -245,7 +245,7 @@ extension ViewController {
                 self.handleFaceDetectionResults(results, image: image)
             }
         })
-        let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: image, orientation: .leftMirrored, options: [:])
+        let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: image, orientation: .down, options: [:])
         try? imageRequestHandler.perform([faceDetectionRequest])
     }
     
