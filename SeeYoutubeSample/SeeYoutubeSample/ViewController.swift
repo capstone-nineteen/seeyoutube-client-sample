@@ -127,7 +127,7 @@ extension ViewController: InitializationDelegate {
             self.tracker?.setDelegates(statusDelegate: self,
                                        gazeDelegate: self,
                                        calibrationDelegate: self,
-                                       imageDelegate: nil)
+                                       imageDelegate: self)
             DispatchQueue.global().async {
                 self.tracker?.startTracking()
             }
@@ -201,5 +201,18 @@ extension ViewController : CalibrationDelegate {
         
         self.showSubview(self.playerView)
         self.playerView.playVideo()
+    }
+}
+
+// MARK: ImageDelegate
+extension ViewController: ImageDelegate {
+    func onImage(timestamp: Double, image: CMSampleBuffer) {
+        DispatchQueue.global().async {
+            guard let frame = CMSampleBufferGetImageBuffer(image) else {
+                print("ERROR: unable to get image from sample buffer")
+                return
+            }
+            // frame 가지고 prediction
+        }
     }
 }
