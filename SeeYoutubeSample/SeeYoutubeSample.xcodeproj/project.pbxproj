@@ -14,7 +14,23 @@
 		04545FAB2931061900F01BE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04545FAA2931061900F01BE6 /* Assets.xcassets */; };
 		04545FAE2931061900F01BE6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04545FAC2931061900F01BE6 /* LaunchScreen.storyboard */; };
 		04545FB72931066800F01BE6 /* YouTubeiOSPlayerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 04545FB62931066800F01BE6 /* YouTubeiOSPlayerHelper */; };
+		04545FBA29310B0A00F01BE6 /* SeeSo.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04545FB829310AFD00F01BE6 /* SeeSo.xcframework */; };
+		04545FBB29310B0A00F01BE6 /* SeeSo.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 04545FB829310AFD00F01BE6 /* SeeSo.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		04545FBC29310B0A00F01BE6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				04545FBB29310B0A00F01BE6 /* SeeSo.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		04545F9E2931061800F01BE6 /* SeeYoutubeSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeeYoutubeSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -25,6 +41,7 @@
 		04545FAA2931061900F01BE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04545FAD2931061900F01BE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04545FAF2931061900F01BE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		04545FB829310AFD00F01BE6 /* SeeSo.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = SeeSo.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +50,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04545FB72931066800F01BE6 /* YouTubeiOSPlayerHelper in Frameworks */,
+				04545FBA29310B0A00F01BE6 /* SeeSo.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +79,7 @@
 				04545FA12931061800F01BE6 /* AppDelegate.swift */,
 				04545FA32931061800F01BE6 /* SceneDelegate.swift */,
 				04545FA52931061800F01BE6 /* ViewController.swift */,
+				04545FB829310AFD00F01BE6 /* SeeSo.xcframework */,
 				04545FA72931061800F01BE6 /* Main.storyboard */,
 				04545FAA2931061900F01BE6 /* Assets.xcassets */,
 				04545FAC2931061900F01BE6 /* LaunchScreen.storyboard */,
@@ -79,6 +98,7 @@
 				04545F9A2931061800F01BE6 /* Sources */,
 				04545F9B2931061800F01BE6 /* Frameworks */,
 				04545F9C2931061800F01BE6 /* Resources */,
+				04545FBC29310B0A00F01BE6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
