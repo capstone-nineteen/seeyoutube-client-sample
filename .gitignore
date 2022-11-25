@@ -137,4 +137,6 @@ SeeSo.framework
 /SeeSo.framework/
 SeeSo.framework/
 
+### License Key ###
+LicenseKey.plist
 # End of https://www.toptal.com/developers/gitignore/api/xcode,swift,macos
