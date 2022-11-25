@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     
     var tracker: GazeTracker? = nil
     private var watchingInfo = WatchingInfo()
+    private let faceExpressionPredictor = FaceExpressionPredictor()
     
     override func viewDidLoad() {
         super.viewDidLoad()
