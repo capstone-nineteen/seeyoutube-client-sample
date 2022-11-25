@@ -7,13 +7,20 @@
 
 import UIKit
 import YouTubeiOSPlayerHelper
+import SeeSo
+import AVFoundation
 
 class ViewController: UIViewController {
     @IBOutlet weak var playerView: YTPlayerView!
     
+    var tracker: GazeTracker? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.loadVideo(with: "M7lc1UVf-VE")
+        DispatchQueue.global().async {
+            self.startEyeTracking()
+        }
     }
 
 
@@ -32,5 +39,40 @@ extension ViewController {
 extension ViewController: YTPlayerViewDelegate {
     func playerView(_ playerView: YTPlayerView, didPlayTime playTime: Float) {
         print(playTime)
+    }
+}
+
+// MARK: Eye-tracking
+extension ViewController {
+    private func startEyeTracking() {
+        if AVCaptureDevice.authorizationStatus(for: .video) == .authorized {
+            self.initializeGazeTracker()
+        } else {
+            AVCaptureDevice.requestAccess(for: .video) { response in
+                if response {
+                    self.initializeGazeTracker()
+                }
+            }
+        }
+    }
+    
+    private func initializeGazeTracker() {
+        if let seesoLicenseKey = Bundle.main.SEESO_LICENSE_KEY {
+            GazeTracker.initGazeTracker(license: seesoLicenseKey, delegate: self)
+        } else {
+            print("ERROR: Cannot find SeeSo license key")
+        }
+    }
+}
+
+// MARK: InitializationDelegate
+extension ViewController: InitializationDelegate {
+    func onInitialized(tracker: GazeTracker?, error: InitializationError) {
+        if (tracker != nil) {
+            self.tracker = tracker
+            print("DEBUG: initialized gaze tracker")
+        } else {
+            print("ERROR: failed to initialize gaze tracker \(error.description)")
+        }
     }
 }
