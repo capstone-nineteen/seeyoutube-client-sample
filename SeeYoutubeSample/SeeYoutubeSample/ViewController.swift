@@ -12,6 +12,7 @@ import AVFoundation
 
 class ViewController: UIViewController {
     @IBOutlet weak var playerView: YTPlayerView!
+    @IBOutlet weak var gazePointView: UIImageView!
     
     var tracker: GazeTracker? = nil
     
@@ -24,6 +25,21 @@ class ViewController: UIViewController {
     }
 
 
+}
+
+// MARK: Subviews
+extension ViewController {
+    private func hideSubview(_ subview: UIView) {
+        DispatchQueue.main.async {
+            subview.isHidden = true
+        }
+    }
+
+    private func showSubview(_ subview: UIView) {
+        DispatchQueue.main.async {
+            subview.isHidden = false
+        }
+    }
 }
 
 // MARK: StatusDelegate
@@ -98,5 +114,13 @@ extension ViewController: InitializationDelegate {
 extension ViewController: GazeDelegate {
     func onGaze(gazeInfo : GazeInfo) {
         print("timestamp : \(gazeInfo.timestamp), (x , y) : (\(gazeInfo.x), \(gazeInfo.y)) , state : \(gazeInfo.trackingState.description)")
+        DispatchQueue.main.async {
+            if gazeInfo.trackingState == .SUCCESS {
+                self.gazePointView.center = CGPoint(x: gazeInfo.x, y: gazeInfo.y)
+                self.showSubview(self.gazePointView)
+            } else {
+                self.hideSubview(self.gazePointView)
+            }
+        }
     }
 }
