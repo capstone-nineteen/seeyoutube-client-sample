@@ -84,11 +84,19 @@ extension ViewController: InitializationDelegate {
             self.tracker = tracker
             print("DEBUG: initialized gaze tracker")
             self.tracker?.statusDelegate = self
+            self.tracker?.gazeDelegate = self
             DispatchQueue.global().async {
                 self.tracker?.startTracking()
             }
         } else {
             print("ERROR: failed to initialize gaze tracker \(error.description)")
         }
+    }
+}
+
+// MARK: GazeDelegate
+extension ViewController: GazeDelegate {
+    func onGaze(gazeInfo : GazeInfo) {
+        print("timestamp : \(gazeInfo.timestamp), (x , y) : (\(gazeInfo.x), \(gazeInfo.y)) , state : \(gazeInfo.trackingState.description)")
     }
 }
