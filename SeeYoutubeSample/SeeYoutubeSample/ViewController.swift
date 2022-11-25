@@ -30,8 +30,6 @@ class ViewController: UIViewController {
             self.startEyeTracking()
         }
     }
-
-
 }
 
 // MARK: Subviews
@@ -55,14 +53,18 @@ extension ViewController {
         self.hideSubview(self.gazePointView)
         self.view.addSubview(self.caliPointView)
     }
-}
-
-// MARK: WatchingInfo
-extension ViewController {
-    private func updateWatchingInfo(gazeInfo: GazeInfo) {
-        let videoGazeInfo = VideoGazeInfo(gazeInfo: gazeInfo, playerOrigin: self.playerView.frame.origin)
-        self.watchingInfo.updateGazeInfo(with: videoGazeInfo)
-        
+    
+    private func updatePredictionLabel(with topPrediction: FaceExpressionPredictor.Prediction?) {
+        DispatchQueue.main.async {
+            if let prediction = topPrediction {
+                self.predictionLabel.text = prediction.classification + "\n" + prediction.confidencePercentage + "%"
+            } else {
+                self.predictionLabel.text = "No Predictions"
+            }
+        }
+    }
+    
+    private func updateGazePointView(with gazeInfo: GazeInfo) {
         DispatchQueue.main.async {
             if gazeInfo.trackingState == .SUCCESS {
                 self.gazePointView.center = CGPoint(x: gazeInfo.x, y: gazeInfo.y)
@@ -72,6 +74,15 @@ extension ViewController {
             }
         }
     }
+}
+
+// MARK: WatchingInfo
+extension ViewController {
+    private func updateWatchingInfo(gazeInfo: GazeInfo) {
+        let videoGazeInfo = VideoGazeInfo(gazeInfo: gazeInfo, playerOrigin: self.playerView.frame.origin)
+        self.watchingInfo.updateGazeInfo(with: videoGazeInfo)
+        self.updateGazePointView(with: gazeInfo)
+    }
     
     private func updateWatchingInfo(playTime: Float) {
         self.watchingInfo.updatePlayTime(with: playTime)
@@ -80,15 +91,7 @@ extension ViewController {
     private func updateWatchingInfo(state: EmotionInfo.EmotionPredictionState, predictions: [FaceExpressionPredictor.Prediction] = []) {
         let emotionInfo = EmotionInfo(emotionPredictionState: state, predictionResult: predictions)
         self.watchingInfo.updateEmotionInfo(with: emotionInfo)
-        
-        DispatchQueue.main.async {
-            if let emotionInfo = self.watchingInfo.emotionInfo,
-               let topPrediction = emotionInfo.predictionResult.first {
-                self.predictionLabel.text = topPrediction.classification + "\n" + topPrediction.confidencePercentage + "%"
-            } else {
-                self.predictionLabel.text = "No Predictions"
-            }
-        }
+        self.updatePredictionLabel(with: predictions.first)
     }
 }
 
