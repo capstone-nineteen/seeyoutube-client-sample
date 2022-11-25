@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     private lazy var caliPointView = CalibrationPointView(frame: CGRect(x: 0, y: -40, width: 40, height: 40))
     
     var tracker: GazeTracker? = nil
+    private var watchingInfo = WatchingInfo()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +51,27 @@ extension ViewController {
     }
 }
 
+// MARK: WatchingInfo
+extension ViewController {
+    private func updateWatchingInfo(gazeInfo: GazeInfo) {
+        let videoGazeInfo = VideoGazeInfo(gazeInfo: gazeInfo, playerOrigin: self.playerView.frame.origin)
+        self.watchingInfo.updateGazeInfo(with: videoGazeInfo)
+        
+        DispatchQueue.main.async {
+            if gazeInfo.trackingState == .SUCCESS {
+                self.gazePointView.center = CGPoint(x: gazeInfo.x, y: gazeInfo.y)
+                self.showSubview(self.gazePointView)
+            } else {
+                self.hideSubview(self.gazePointView)
+            }
+        }
+    }
+    
+    private func updateWatchingInfo(playTime: Float) {
+        self.watchingInfo.updatePlayTime(with: playTime)
+    }
+}
+
 // MARK: Youtube
 extension ViewController {
     private func loadVideo(with id: String) {
@@ -62,7 +84,8 @@ extension ViewController {
 // MARK: YTPlayerViewDelegate
 extension ViewController: YTPlayerViewDelegate {
     func playerView(_ playerView: YTPlayerView, didPlayTime playTime: Float) {
-        print(playTime)
+        self.updateWatchingInfo(playTime: playTime)
+        print(self.watchingInfo)
     }
 }
 
@@ -124,17 +147,8 @@ extension ViewController: StatusDelegate {
 extension ViewController: GazeDelegate {
     func onGaze(gazeInfo : GazeInfo) {
         guard let isCalibrating = self.tracker?.isCalibrating(),
-                  !isCalibrating else { return }
-        
-        print("timestamp : \(gazeInfo.timestamp), (x , y) : (\(gazeInfo.x), \(gazeInfo.y)) , state : \(gazeInfo.trackingState.description)")
-        DispatchQueue.main.async {
-            if gazeInfo.trackingState == .SUCCESS {
-                self.gazePointView.center = CGPoint(x: gazeInfo.x, y: gazeInfo.y)
-                self.showSubview(self.gazePointView)
-            } else {
-                self.hideSubview(self.gazePointView)
-            }
-        }
+              !isCalibrating else { return }
+        self.updateWatchingInfo(gazeInfo: gazeInfo)
     }
 }
 

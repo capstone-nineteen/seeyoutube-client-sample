@@ -19,6 +19,8 @@
 		04545FBE29310B4A00F01BE6 /* LicenseKey.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04545FBD29310B4A00F01BE6 /* LicenseKey.plist */; };
 		04545FC129310CD300F01BE6 /* Bundle+eExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04545FC029310CD300F01BE6 /* Bundle+eExtension.swift */; };
 		04545FC4293111F100F01BE6 /* CalibrationPointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04545FC3293111F100F01BE6 /* CalibrationPointView.swift */; };
+		04545FC72931132E00F01BE6 /* VideoGazeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04545FC62931132E00F01BE6 /* VideoGazeInfo.swift */; };
+		04545FC92931134C00F01BE6 /* WatchingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04545FC82931134C00F01BE6 /* WatchingInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -48,6 +50,8 @@
 		04545FBD29310B4A00F01BE6 /* LicenseKey.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = LicenseKey.plist; sourceTree = "<group>"; };
 		04545FC029310CD300F01BE6 /* Bundle+eExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+eExtension.swift"; sourceTree = "<group>"; };
 		04545FC3293111F100F01BE6 /* CalibrationPointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationPointView.swift; sourceTree = "<group>"; };
+		04545FC62931132E00F01BE6 /* VideoGazeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoGazeInfo.swift; sourceTree = "<group>"; };
+		04545FC82931134C00F01BE6 /* WatchingInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchingInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +86,7 @@
 		04545FA02931061800F01BE6 /* SeeYoutubeSample */ = {
 			isa = PBXGroup;
 			children = (
+				04545FC52931132200F01BE6 /* Models */,
 				04545FC2293111E300F01BE6 /* Views */,
 				04545FBF29310CC600F01BE6 /* Extensions */,
 				04545FA12931061800F01BE6 /* AppDelegate.swift */,
@@ -111,6 +116,15 @@
 				04545FC3293111F100F01BE6 /* CalibrationPointView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		04545FC52931132200F01BE6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				04545FC62931132E00F01BE6 /* VideoGazeInfo.swift */,
+				04545FC82931134C00F01BE6 /* WatchingInfo.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,6 +210,8 @@
 				04545FC129310CD300F01BE6 /* Bundle+eExtension.swift in Sources */,
 				04545FC4293111F100F01BE6 /* CalibrationPointView.swift in Sources */,
 				04545FA22931061800F01BE6 /* AppDelegate.swift in Sources */,
+				04545FC92931134C00F01BE6 /* WatchingInfo.swift in Sources */,
+				04545FC72931132E00F01BE6 /* VideoGazeInfo.swift in Sources */,
 				04545FA42931061800F01BE6 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
