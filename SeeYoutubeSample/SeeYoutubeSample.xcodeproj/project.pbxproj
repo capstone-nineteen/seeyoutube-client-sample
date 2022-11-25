@@ -21,6 +21,7 @@
 		04545FC4293111F100F01BE6 /* CalibrationPointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04545FC3293111F100F01BE6 /* CalibrationPointView.swift */; };
 		04545FC72931132E00F01BE6 /* VideoGazeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04545FC62931132E00F01BE6 /* VideoGazeInfo.swift */; };
 		04545FC92931134C00F01BE6 /* WatchingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04545FC82931134C00F01BE6 /* WatchingInfo.swift */; };
+		04545FCB293113EC00F01BE6 /* MiniXception.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 04545FCA293113EC00F01BE6 /* MiniXception.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -52,6 +53,7 @@
 		04545FC3293111F100F01BE6 /* CalibrationPointView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalibrationPointView.swift; sourceTree = "<group>"; };
 		04545FC62931132E00F01BE6 /* VideoGazeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoGazeInfo.swift; sourceTree = "<group>"; };
 		04545FC82931134C00F01BE6 /* WatchingInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchingInfo.swift; sourceTree = "<group>"; };
+		04545FCA293113EC00F01BE6 /* MiniXception.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MiniXception.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				04545FA12931061800F01BE6 /* AppDelegate.swift */,
 				04545FA32931061800F01BE6 /* SceneDelegate.swift */,
 				04545FA52931061800F01BE6 /* ViewController.swift */,
+				04545FCA293113EC00F01BE6 /* MiniXception.mlmodel */,
 				04545FB829310AFD00F01BE6 /* SeeSo.xcframework */,
 				04545FA72931061800F01BE6 /* Main.storyboard */,
 				04545FAA2931061900F01BE6 /* Assets.xcassets */,
@@ -209,6 +212,7 @@
 				04545FA62931061800F01BE6 /* ViewController.swift in Sources */,
 				04545FC129310CD300F01BE6 /* Bundle+eExtension.swift in Sources */,
 				04545FC4293111F100F01BE6 /* CalibrationPointView.swift in Sources */,
+				04545FCB293113EC00F01BE6 /* MiniXception.mlmodel in Sources */,
 				04545FA22931061800F01BE6 /* AppDelegate.swift in Sources */,
 				04545FC92931134C00F01BE6 /* WatchingInfo.swift in Sources */,
 				04545FC72931132E00F01BE6 /* VideoGazeInfo.swift in Sources */,
