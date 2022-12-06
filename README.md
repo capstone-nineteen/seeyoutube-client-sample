@@ -55,7 +55,7 @@
 
 </br>
 
-5. 빌드 가능하도록 실기기를 맥에 해당 기기에서 실행하도록 선택해줍니다. (연결 방법은 [여기](https://sweepty.medium.com/자신의-아이폰에-테스트-앱-올리기-54e07e17d3f7)를 참고)![스크린샷](https://user-images.githubusercontent.com/70833900/205860472-22eac15c-e1ac-4408-ad13-f8f8127c4efe.png)
+5. 빌드 가능하도록 실기기를 맥에 연결하고, 해당 기기에서 실행하도록 설정해줍니다. (연결 방법은 [여기](https://sweepty.medium.com/자신의-아이폰에-테스트-앱-올리기-54e07e17d3f7)를 참고)![스크린샷](https://user-images.githubusercontent.com/70833900/205860472-22eac15c-e1ac-4408-ad13-f8f8127c4efe.png)
 
 </br>
 
