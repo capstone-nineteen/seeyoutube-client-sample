@@ -13,11 +13,20 @@
 
 ## 준비 사항
 
+- iOS 13.0+, iPhone 6s+, 네트워크 연결된 **실기기** (시뮬레이터 불가)
+
 - SeeSo SDK iOS 2.5.1 버전 & SeeSo 라이센스 키
 
-  - [SeeSo Console](https://manage.seeso.io/#/console/)에서 받을 수 있습니다.
-  
-- iOS 13.0+, iPhone 6s+, 네트워크 연결된 **실기기** (시뮬레이터 불가)
+  1. [SeeSo Console](https://manage.seeso.io/#/console/)에 가입합니다.
+
+  2. [SDK] 메뉴에서 iOS(Swift) 2.5.1 버전을 다운로드 받습니다. `SeeSo.xcframework`가 다운로드됩니다.
+    
+      ![R1280x0](https://user-images.githubusercontent.com/70833900/206687818-6c581e29-a445-4678-af8b-e88170494377.png)
+
+
+  3. [License Keys] 메뉴에서 [Start free trial license]을 눌러 라이센스키를 발급받습니다.
+    
+      ![R1280x0-2](https://user-images.githubusercontent.com/70833900/206687879-5fe08ce6-d9aa-4c5e-a1c9-87557fd8b9eb.png)
 
 </br>
 
@@ -29,7 +38,9 @@
 
 ## 프로젝트 실행 방법
 
-1. `SeeYoutubeSample/SeeYoutubeSample/SeeSo.xcframework`폴더를 다운로드 받은 SeeSo.xcframework 폴더로 변경합니다.![스크린샷 2022-11-26 오전 1 08 32](https://user-images.githubusercontent.com/70833900/204022493-0450b52a-bd9a-4fa4-96fa-00e659ad550a.png)
+1. `SeeYoutubeSample/SeeYoutubeSample/SeeSo.xcframework`폴더를 다운로드 받은 SeeSo.xcframework 폴더로 변경합니다.
+
+	![스크린샷 2022-11-26 오전 1 08 32](https://user-images.githubusercontent.com/70833900/204022493-0450b52a-bd9a-4fa4-96fa-00e659ad550a.png)
 
 </br>
 
@@ -47,15 +58,21 @@
 
 </br>
 
-3. 생성한 `LicenseKey.plist` 파일을 `SeeYoutubeSample/SeeYoutubeSample/` 경로에 추가합니다.![스크린샷](https://user-images.githubusercontent.com/70833900/204022983-ad840704-90d2-4734-a36e-dbd14ca87c1e.png)
+3. 생성한 `LicenseKey.plist` 파일을 `SeeYoutubeSample/SeeYoutubeSample/` 경로에 추가합니다.
+
+	![스크린샷](https://user-images.githubusercontent.com/70833900/204022983-ad840704-90d2-4734-a36e-dbd14ca87c1e.png)
 
 </br>
 
-4. `SeeYoutubeSample/SeeYoutubeSample.xcodeproj`를 더블 클릭하여 Xcode에서 프로젝트를 엽니다.![스크린샷](https://user-images.githubusercontent.com/70833900/205860576-6e740272-f65b-4f5e-8217-8a0e7010fadc.png)
+4. `SeeYoutubeSample/SeeYoutubeSample.xcodeproj`를 더블 클릭하여 Xcode에서 프로젝트를 엽니다.
+
+	![스크린샷](https://user-images.githubusercontent.com/70833900/205860576-6e740272-f65b-4f5e-8217-8a0e7010fadc.png)
 
 </br>
 
-5. 빌드 가능하도록 실기기를 맥에 연결하고, 해당 기기에서 실행하도록 설정해줍니다. (연결 방법은 [여기](https://sweepty.medium.com/자신의-아이폰에-테스트-앱-올리기-54e07e17d3f7)를 참고)![스크린샷](https://user-images.githubusercontent.com/70833900/205860472-22eac15c-e1ac-4408-ad13-f8f8127c4efe.png)
+5. 빌드 가능하도록 실기기를 맥에 연결하고, 해당 기기에서 실행하도록 설정해줍니다. (연결 방법은 [여기](https://sweepty.medium.com/자신의-아이폰에-테스트-앱-올리기-54e07e17d3f7)를 참고)
+
+	![스크린샷](https://user-images.githubusercontent.com/70833900/205860472-22eac15c-e1ac-4408-ad13-f8f8127c4efe.png)
 
 </br>
 
